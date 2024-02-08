@@ -24,18 +24,12 @@
                         <input type="text" class="form-control @if ($errors->has('nome')) is-invalid @endif"
                             placeholder="Nome" aria-label="Nome " name="nome" oninput="this.value = this.value.toUpperCase()"
                             value="{{ old('nome') }}" required>
+                            @error('nome')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
                 </div>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
             </form>
         </div>
     </div>
