@@ -22,7 +22,19 @@ class ReinoRequest extends FormRequest
     public function rules(): array
     {
         return [
-          'nome' => ['required', 'string', 'between:2,100'],
+            'nome' => ['required', 'string', 'between:2,100', 'regex:/^[a-zA-ZÀ-ÿ\s]*$/'],
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'nome.regex' => 'O campo Nome deve conter apenas letras.',
         ];
     }
 }
