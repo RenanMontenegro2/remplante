@@ -44,7 +44,7 @@ use App\Http\Controllers\form_elements\InputGroups;
 use App\Http\Controllers\form_layouts\VerticalForm;
 use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
-use App\Http\Controllers\reino;
+use App\Http\Controllers\ReinoController;
 // Main Page Route
 Route::get('/', [Analytics::class, 'index'])->name('dashboard-analytics');
 
@@ -108,7 +108,18 @@ Route::get('/form/layouts-horizontal', [HorizontalForm::class, 'index'])->name('
 
 // tables
 Route::get('/tables/basic', [TablesBasic::class, 'index'])->name('tables-basic');
-Route::get('/reino',[Reino::class,'index'])->name('reino-index');
+//reino
+Route::get('/reino',[ReinoController::class,'index'])->name('reino.index');
+Route::get('/reino/create',[ReinoController::class,'create'])->name('reino.create');
+Route::post('/reino/store', [ReinoController::class, 'store'])->name('reino.store');
+Route::get('/reino/show/{reino}', [ReinoController::class, 'show'])->name('reino.show');
+Route::get('/reino/edit/{reino}', [ReinoController::class, 'edit'])->name('reino.edit');
+Route::put('/reino/update/{reino}', [ReinoController::class, 'update'])->name('reino.update');
+Route::delete('/reino/delete/{reino}', [ReinoController::class, 'destroy'])->name('reino.delete');
+
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
